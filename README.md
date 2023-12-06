@@ -23,6 +23,9 @@
 <a id="anchor1"></a>
 
 ## R1 - Identification of the problem you are trying to solve by building this particular app.
+I am building this particular app to address the problem of a large retail sales company with an ineffcient new employee training system. The problem is that a mentor and new employees use a group journal which is a notebook to exchange feedback, which is inefficient and unsuitable for storing and sharing information.<br>
+By developing this app, manual information exchage is no longer necessary, and feedback between a mentor and new employees can be smoothly conducted on the app.,<br>
+Other employees can view the conversation on a unified platform, so when they comment on a new employee, they can communicate with them while understanding the corrent situation. This app will improve the efficiency of training new employees and also make data management easier.
 
 
 <a id="anchor2"></a>
