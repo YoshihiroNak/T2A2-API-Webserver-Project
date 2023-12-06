@@ -31,7 +31,13 @@ Other employees can view the conversation on a unified platform, so when they co
 <a id="anchor2"></a>
 
 ## R2 - Why is it a problem that needs solving?
+There are several problems with managing group journals in notebooks. the problems that require solutions are:<br>
 
+- Inefficiency: Exchanging feedback using a notebook is inefficient because only the person who owns the notebook can write and view it. Manual work is time-consuming and limits the opportunity for other employees to view it.
+
+- Data Management: It is inefficient for a company to keep multiple notebooks, and searching for past information becomes manual and time-consuming.　By managing data, a campany can quickly search for past information and use it for training new empolyees　in the next period.
+
+- Limited collaboration: The current method is inefficient as oppotunities for other employees to view the group journal are limited. Additionally, it is difficult to grasp the status of new employee training for all employees. By having a unified platform, all employees can view the group journal, and there is the advantage that they can communicate after understanding the situation.
 
 <a id="anchor3"></a>
 
