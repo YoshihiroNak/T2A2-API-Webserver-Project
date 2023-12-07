@@ -42,11 +42,53 @@ There are several problems with managing group journals in notebooks. the proble
 <a id="anchor3"></a>
 
 ## R3 - Why have you chosen this database system. What are the drawbacks compared to others?
+I have chosen PostgreSQL as the database for this app because it is a powful and reliable open source relational database management system(RDBMS) and it ishighly scalable.
+Moreover, PostgeSQL has rich query optimization features and can efficiently process complex queries. <br>
+When comparing PostgreSQL and MongoDB which is one of the other database management system, there are the following drawbacks: <br>
+#### PostgeSQL drawbacks compared MongoDB
+
+- Performance: When we handle large amounts of data or high traffic, PostgeSQL might not suitable.
+- Schema Flexiblity: PostgeSQL is not a flexible schema such as  MongoDB, so it doesn't allow for easy modification or adaptation to changing data requirements.
+
+#### MongoDB drawbacks compared PostgeSQL
+
+- Consistency and Transactions: MongoDB sacrifices some of the ACID properties in favar of performance and scalability. It may not be the best choice for applications that require strict consistency and complex.
+- Administration: The administaration comes with its own set of difficulities and complexities.
+
+The choice between PostgreSQL and MongoDB depends on the specific requirements of the project, including the nature of data, scalability needs and the importance of transactional consistency.
+
 
 <a id="anchor4"></a>
 
 ## R4 - Identify and discuss the key functionalities and benefits of an ORM
+ORM stands for Object_Relational Mapping. It is a programing technique userd in software development that involves the conversion of data between incompatible type systems in relational databases and object-oriented programming languages The primary goal of ORM is to bridge the gap between the relatiomal model of a database and the object-oriented model used in application code.<br>
 
+A key function of ORM is to facilitate the seamless interaction between an application's object-oriented code and the underlying relational database. <br>
+Here are the key functions of ORM:<br>
+
+#### 1. Mapping Objects to Tables: 
+
+- ORM enables developers to define mappings between the objects in their application code and the tables in the relational database. Each class in the code corresponds to a table in the database, and instances of these classes represent rows in the  table.
+
+#### 2. Abstraction of Database Operations:
+
+- Developers can interact with the database using object-oriented syntax and methods, abstracting away the need to write raw SQL queries. ORM frameworks provide methods for common database operations(e.g., `insert`, `update`)that can be called from the application code.
+
+Here are the benefits of ORM:<br>
+
+#### 1. Abstraction:
+
+- Developers can work with objects and classes in their code, abstracting away the complexities of SQL queries and database schema.
+
+#### 2. Portability:
+
+- ORM frameworks often provide a level of abstraction that makes it easier to switch between different database systems without significant cade changes.
+
+#### 3. Productivity:
+
+- ORM can lead to increased productivity as developers can focus more on the application logic rather than writing raw SQL queries.
+
+In summary, the key function of ORM is to simplify and streamline the interaction between object-oriented code and relational database, providing a higher level of abstraction, improving code maintainability, and facilitating a more natural and intuitive way for developers to work with database in their applications.
 
 <a id="anchor5"></a>
 
