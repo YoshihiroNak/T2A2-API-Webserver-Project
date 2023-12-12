@@ -3,9 +3,9 @@ from marshmallow import fields
 from datetime import datetime
 
 
-
 class Feedback(db.Model):
     __tablename__ = 'feedbacks'
+    
     id = db.Column(db.Integer, primary_key=True)
     
     message = db.Column(db.Text, nullable=False)
@@ -13,7 +13,9 @@ class Feedback(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     user = db.relationship('User', back_populates='feedbacks')
 
+    # Foreign Key
     journal_id = db.Column(db.Integer, db.ForeignKey('journals.id'), nullable=False)
+    # SQLAlchemy relationship
     journal = db.relationship('Journal', back_populates='feedbacks')
 
 

@@ -4,7 +4,6 @@ from models.user import User
 from setup import db
 
 
-
 def authorize(user_id=None):
     jwt_user_id = get_jwt_identity()
     stmt = db.select(User).filter_by(id=jwt_user_id)

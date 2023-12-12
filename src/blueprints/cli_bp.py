@@ -8,13 +8,14 @@ from datetime import date
 
 db_commands = Blueprint('db' , __name__) 
 
+# create_db drops all tables and then creates all tables.
 @db_commands.cli.command('create')
 def db_create():
 	db.drop_all()
 	db.create_all()
 	print('Created tables')
 
-
+# seed_db is the function that adds data to the database table columns.
 @db_commands.cli.command('seed')
 def db_seed():
 	users = [
@@ -48,7 +49,7 @@ def db_seed():
 		),
 		Journal(
 			title = 'Role play',
-			description = 'Train to know how to sale',
+			description = 'Perform to sale in front of everyone',
 			data_created = date.today(),
             user_id = users[0].id
 		),
@@ -71,7 +72,7 @@ def db_seed():
         ),
         Feedback(
             message = "Feedback 3",
-            user_id = users[1].id,
+            user_id = users[2].id,
             journal_id = journals[0].id
         )
     ]

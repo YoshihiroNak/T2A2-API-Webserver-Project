@@ -23,7 +23,8 @@ feedbacks_bp = Blueprint('feedbacks', __name__, url_prefix='/<int:journal_id>/fe
 #         return FeedbackSchema().dump(feedback)
 #     else:
 #         return {'error': 'Feedback not found'}, 404
-    
+
+# Post a new feedback
 @feedbacks_bp.route('/', methods=['POST'])
 @jwt_required()
 def create_feedback(journal_id):
@@ -37,7 +38,7 @@ def create_feedback(journal_id):
     db.session.commit()
     return FeedbackSchema().dump(feedback), 201
 
-
+# Allows only admin or the user themselves to update a feedback from database
 @feedbacks_bp.route('/<int:feedback_id>', methods=['PUT', 'PATCH'])
 @jwt_required()
 def update_feedback(journal_id, feedback_id):
@@ -52,7 +53,7 @@ def update_feedback(journal_id, feedback_id):
     else:
         return {'error': 'Feedback not found'}, 404
     
-# Delete a card
+# Allows only admin or the user themselves to delete a feedback from database
 @feedbacks_bp.route('/<int:feedback_id>', methods=['DELETE'])
 @jwt_required()
 def delete_feedback(journal_id, feedback_id):

@@ -9,6 +9,7 @@ journals_bp = Blueprint('journals', __name__, url_prefix='/journals')
 
 journals_bp.register_blueprint(feedbacks_bp)
 
+# Get all journals
 @journals_bp.route('/')
 @jwt_required()
 def all_journals():
@@ -16,6 +17,7 @@ def all_journals():
     journals = db.session.scalars(stmt).all()
     return JournalSchema(many=True, exclude=['user.journals']).dump(journals)
 
+# Get one journal
 @journals_bp.route('/<int:id>')
 @jwt_required()
 def one_journal(id):
@@ -25,7 +27,8 @@ def one_journal(id):
         return JournalSchema().dump(journal)
     else:
         return {'error': 'Journal not found'}, 404
-    
+
+# Post a new journal
 @journals_bp.route('/', methods=['POST'])
 @jwt_required()
 def create_journal():
@@ -39,7 +42,7 @@ def create_journal():
     db.session.commit()
     return JournalSchema().dump(journal), 201
 
-
+# Allows only admin or the user themselves to update a journal from database
 @journals_bp.route('/<int:id>', methods=['PUT', 'PATCH'])
 @jwt_required()
 def update_journal(id):
@@ -55,12 +58,12 @@ def update_journal(id):
     else:
         return {'error': 'Journal not found'}, 404
     
-# Delete a card
+# Delete a journal if the user is admin
 @journals_bp.route('/<int:id>', methods=['DELETE'])
 @jwt_required()
 def delete_journal(id):
     authorize()
-    stmt = db.select(Journal).filter_by(id=id) # .where(Card.id == id)
+    stmt = db.select(Journal).filter_by(id=id) 
     journal = db.session.scalar(stmt)
     if journal:
         authorize(journal.user_id)

@@ -13,8 +13,9 @@ class Journal(db.Model):
     description = db.Column(db.Text)
     data_created = db.Column(db.Date, default=datetime.now().strftime("%Y-%m-%d"))
     
+    # Foreign Key
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-
+    # SQLAlchemy relationship
     user = db.relationship('User', back_populates='journals')
     feedbacks = db.relationship('Feedback', back_populates='journal')
 
