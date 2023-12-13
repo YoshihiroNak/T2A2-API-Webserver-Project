@@ -1,6 +1,5 @@
 from setup import db, ma
 from marshmallow import fields
-from datetime import datetime
 
 
 class Feedback(db.Model):
@@ -10,7 +9,9 @@ class Feedback(db.Model):
     
     message = db.Column(db.Text, nullable=False)
 
+    # Foreign Key
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    # SQLAlchemy relationship
     user = db.relationship('User', back_populates='feedbacks')
 
     # Foreign Key
