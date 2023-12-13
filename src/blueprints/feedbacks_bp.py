@@ -57,7 +57,7 @@ def update_feedback(journal_id, feedback_id):
 @feedbacks_bp.route('/<int:feedback_id>', methods=['DELETE'])
 @jwt_required()
 def delete_feedback(journal_id, feedback_id):
-    stmt = db.select(Feedback).filter_by(id=feedback_id) # .where(Card.id == id)
+    stmt = db.select(Feedback).filter_by(id=feedback_id) 
     feedback = db.session.scalar(stmt)
     if feedback:
         authorize(feedback.user_id)

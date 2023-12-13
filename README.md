@@ -1,5 +1,8 @@
 # GroupJournal_T2A2
 
+[Group Journal T2A2 Github repository link](https://github.com/YoshihiroNak/T2A2-API-Webserver-Project)<br>
+[Trello link](https://trello.com/b/cnSJxnGl/api-webserver-project)
+
 # Table of Contents:
 
 - [R1 - Identification of the problem you are trying to solve by building this particular app.](#anchor1)
@@ -18,11 +21,45 @@
 ](#anchor10)
 
 
+### Installation Instructions:
+
+#### for Mac OS
+
+##### Open the terminal and run the following commands:
+
+- Connect to a PostgreSQL database from the Flask application. Run the PostgreSQL prompt in the terminal: psql postgres
+
+- Create the database: create database journal;
+
+- Connect to the database: \c journal;
+
+- Create user and set a temporary password as: create user journal_dev with password '1234';
+
+- Grant user priviliges: grant all privileges on database journal to journal_dev;
+<br>
+
+#### Open the second terminal and run the following commands:
+
+- python3 -m venv .venv
+
+- If virtual environment is not automatically activated run: source .venv/bin/activate
+
+- Install dependant packages: pip3 install -r requirements.txt
+
+- python3 -m flask db create
+
+- python3 -m flask db seed
+
+- python3 -m flask run
+
+- Rename the .flaskenv.sample to .flaskenv and set the database connection stream and the JWT secret key: DB_URI="postgresql+psycopg2://journal_dev:1234@127.0.0.1:5432/journal"  JWT_KEY="Group Journals"
+- Open HOPPSCOTCH and use localhost:5566 as port 5566 is set as the default port in .flaskenv
+
 <a id="anchor1"></a>
 
 ## R1 - Identification of the problem you are trying to solve by building this particular app.
 I am building this particular app to address the problem of a large retail sales company with an ineffcient new employee training system. The problem is that a mentor and new employees use a group journal which is a notebook to exchange feedback, which is inefficient and unsuitable for storing and sharing information.<br>
-By developing this app, manual information exchage is no longer necessary, and feedback between a mentor and new employees can be smoothly conducted on the app.,<br>
+By developing this app, manual information exchange is no longer necessary, and feedback between a mentor and new employees can be smoothly conducted on the app.<br>
 Other employees can view the conversation on a unified platform, so when they comment on a new employee, they can communicate with them while understanding the corrent situation. This app will improve the efficiency of training new employees and also make data management easier.
 
 
@@ -33,14 +70,14 @@ There are several problems with managing group journals in notebooks. the proble
 
 - Inefficiency: Exchanging feedback using a notebook is inefficient because only the person who owns the notebook can write and view it. Manual work is time-consuming and limits the opportunity for other employees to view it.
 
-- Data Management: It is inefficient for a company to keep multiple notebooks, and searching for past information becomes manual and time-consuming.　By managing data, a campany can quickly search for past information and use it for training new empolyees　in the next period.
+- Data Management: It is inefficient for a company to keep multiple notebooks, and searching for past information becomes manual and time-consuming. By managing data, a campany can quickly search for past information and use it for training new empolyees in the next period.
 
 - Limited collaboration: The current method is inefficient as oppotunities for other employees to view the group journal are limited. Additionally, it is difficult to grasp the status of new employee training for all employees. By having a unified platform, all employees can view the group journal, and there is the advantage that they can communicate after understanding the situation.
 
 <a id="anchor3"></a>
 
 ## R3 - Why have you chosen this database system. What are the drawbacks compared to others?
-I have chosen PostgreSQL as the database for this app because it is a powful and reliable open source relational database management system(RDBMS) and it ishighly scalable.
+I have chosen PostgreSQL as the database for this app because it is a powful and reliable open source relational database management system(RDBMS) and it is highly scalable.
 Moreover, PostgeSQL has rich query optimization features and can efficiently process complex queries. <br>
 When comparing PostgreSQL and MongoDB which is one of the other database management system, there are the following drawbacks: <br>
 #### PostgeSQL drawbacks compared MongoDB
@@ -50,7 +87,7 @@ When comparing PostgreSQL and MongoDB which is one of the other database managem
 
 #### MongoDB drawbacks compared PostgeSQL
 
-- Consistency and Transactions: MongoDB sacrifices some of the ACID properties in favar of performance and scalability. It may not be the best choice for applications that require strict consistency and complex.
+- Consistency and Transactions: MongoDB sacrifices some of the ACID properties in favor of performance and scalability. It may not be the best choice for applications that require strict consistency and complex.
 - Administration: The administaration comes with its own set of difficulities and complexities.
 
 The choice between PostgreSQL and MongoDB depends on the specific requirements of the project, including the nature of data, scalability needs and the importance of transactional consistency.
@@ -59,7 +96,7 @@ The choice between PostgreSQL and MongoDB depends on the specific requirements o
 <a id="anchor4"></a>
 
 ## R4 - Identify and discuss the key functionalities and benefits of an ORM
-ORM stands for Object_Relational Mapping. It is a programing technique userd in software development that involves the conversion of data between incompatible type systems in relational databases and object-oriented programming languages The primary goal of ORM is to bridge the gap between the relatiomal model of a database and the object-oriented model used in application code.<br>
+ORM stands for Object_Relational Mapping. It is a programing technique used in software development that involves the conversion of data between incompatible type systems in relational databases and object-oriented programming languages The primary goal of ORM is to bridge the gap between the relatiomal model of a database and the object-oriented model used in application code.<br>
 
 A key function of ORM is to facilitate the seamless interaction between an application's object-oriented code and the underlying relational database. <br>
 Here are the key functions of ORM:<br>
@@ -272,7 +309,7 @@ The Flask JWT Extended extension provides tools to easily implement JWT-based au
 
 ### Journal model
 
-- The Journal model represents a journal and has a one-to-many relationship with Feedback and many-to-one relationships with user.
+- The Journal model represents a journal and has a one-to-many relationship with Feedback and many-to-one relationships with User.
 The Journal model has a foreign key journal_id in the Feedback model, which establishes the relationship between the two models.
  The relationship is defined using "user = db.relationship('User', back_populates='journals')" and
  "feedbacks = db.relationship('Feedback', back_populates='journal')" in the Journal model.

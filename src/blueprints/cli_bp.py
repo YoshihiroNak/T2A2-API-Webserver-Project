@@ -8,14 +8,14 @@ from datetime import date
 
 db_commands = Blueprint('db' , __name__) 
 
-# create_db drops all tables and then creates all tables.
+# db_create drops all tables and then creates all tables.
 @db_commands.cli.command('create')
 def db_create():
 	db.drop_all()
 	db.create_all()
 	print('Created tables')
 
-# seed_db is the function that adds data to the database table columns.
+# db_seed is the function that adds data to the database table columns.
 @db_commands.cli.command('seed')
 def db_seed():
 	users = [
